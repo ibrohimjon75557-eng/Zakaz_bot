@@ -7,6 +7,9 @@ from keyboards.contact import phone_kb
 from config import ADMIN_ID
 from db import save_order
 
+from config import CHANNEL_ID
+
+
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
     await message.answer("Salom!\n/zakazni bosing.")
@@ -56,6 +59,8 @@ async def get_box(message: types.Message, state: FSMContext):
 ⚖️ {data['kg']} kg
 📦 {box} dona
 """
+        
+        await bot.send_message(CHANNEL_ID, text)
         await bot.send_message(ADMIN_ID, text)
         await message.answer("✅ Qabul qilindi")
 
